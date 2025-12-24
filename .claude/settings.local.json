@@ -13,52 +13,5 @@
       "Bash(skill-index:*)",
       "Bash(find-skill:*)"
     ]
-  },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run python .claude/hooks/session_start.py",
-            "timeout": 10000
-          }
-        ]
-      }
-    ],
-    "PreCompact": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run python .claude/hooks/pre_compact.py",
-            "timeout": 20000
-          }
-        ]
-      }
-    ],
-    "SessionEnd": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run python .claude/hooks/session_end.py",
-            "timeout": 20000
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "uv run python '/Users/knrz/Git/zenbase-ai/voyager/.claude/hooks/post_tool_use_feedback.py'",
-            "timeout": 5000
-          }
-        ]
-      }
-    ]
   }
 }

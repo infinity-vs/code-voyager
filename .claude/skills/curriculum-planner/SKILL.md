@@ -1,8 +1,7 @@
 ---
 name: curriculum-planner
 description: |
-  Voyager-style curriculum planning for codebases. Generates sequences of high-leverage
-  tasks that increase understanding and improve the code. Use when:
+  Generates sequences of high-leverage tasks that increase understanding and improve the code. Use when:
   - "what should I work on next?" - suggests prioritized tasks
   - "create a plan for this repo" - generates a curriculum
   - "what's the roadmap?" - shows curriculum overview

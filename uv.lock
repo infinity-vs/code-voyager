@@ -3225,11 +3225,13 @@ dependencies = [
     { name = "claude-agent-sdk" },
     { name = "jsonschema" },
     { name = "pyyaml" },
-    { name = "ragatouille" },
     { name = "typer" },
 ]
 
 [package.optional-dependencies]
+colbert = [
+    { name = "ragatouille" },
+]
 dev = [
     { name = "pytest" },
     { name = "ruff" },
@@ -3241,11 +3243,11 @@ requires-dist = [
     { name = "jsonschema", specifier = ">=4.25.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pyyaml", specifier = ">=6.0" },
-    { name = "ragatouille", specifier = ">=0.0.8" },
+    { name = "ragatouille", marker = "extra == 'colbert'", specifier = ">=0.0.8" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.8.0" },
     { name = "typer", specifier = ">=0.15.0" },
 ]
-provides-extras = ["dev"]
+provides-extras = ["colbert", "dev"]
 
 [[package]]
 name = "werkzeug"

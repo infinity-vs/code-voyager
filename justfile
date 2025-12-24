@@ -44,10 +44,10 @@ sync-skills:
 
 # --- hook testing ---
 hook-session-start:
-  cat .claude/fixtures/hooks/session_start.json | python scripts/hooks/session_start.py | python -m json.tool
+  cat .claude/fixtures/hooks/session_start.json | uv run voyager hook session-start | python -m json.tool
 
 hook-pre-compact:
-  cat .claude/fixtures/hooks/pre_compact.json | python scripts/hooks/pre_compact.py | python -m json.tool
+  cat .claude/fixtures/hooks/pre_compact.json | uv run voyager hook pre-compact | python -m json.tool
 
 hook-session-end:
-  cat .claude/fixtures/hooks/session_end.json | python scripts/hooks/session_end.py | python -m json.tool
+  cat .claude/fixtures/hooks/session_end.json | uv run voyager hook session-end | python -m json.tool

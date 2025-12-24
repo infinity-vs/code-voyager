@@ -1,19 +1,62 @@
 # Code Voyager
 
-Meta-skills for Coding Agents: persistent session memory, curriculum planning, skill generation, retrieval, and refinement.
+**Claude Code that remembers.**
+
+Every session starts from zero. You teach Claude your patterns, refine your prompts, discover what works—then close the terminal and it's gone. Code Voyager fixes this.
+
+Inspired by [Voyager](https://arxiv.org/abs/2305.16291), the Minecraft AI that learns and improves over time, Code Voyager brings three mechanisms to Claude Code: **memory** that persists, **direction** that guides, and **skills** that compound.
+
+### The 5 Skills
+
+| Skill | What it does |
+|-------|--------------|
+| **Session Brain** | Persistent working memory—tracks your goals, decisions, and progress across sessions |
+| **Curriculum Planner** | Generates prioritized task sequences—for onboarding, roadmaps, or refactors |
+| **Skill Factory** | Proposes and scaffolds new skills from observed patterns in your workflows |
+| **Skill Retrieval** | Semantic search over your skill library using ColBERT late-interaction embeddings |
+| **Skill Refinement** | Analyzes tool execution feedback to recommend skill improvements |
+
+The result: an assistant that gets better at helping you the more you use it.
+
+> See [WHY.md](WHY.md) for the full motivation.
 
 ## Installation
 
 ### Quick Install
 
 ```bash
-# 0. Install the CLI
+# 1. Install the CLI
 uv tool install "git+https://github.com/zenbase-ai/code-voyager.git"
 
-# 1. Install skills to Claude Code
-curl -sL https://github.com/zenbase-ai/code-voyager/archive/main.tar.gz | \
-  tar -xz -C ~/.claude/skills --strip-components=2 code-voyager-main/.claude/skills
+# 2. Install skills to Claude Code (in your project directory)
+mkdir -p .claude/skills && \
+  curl -sL https://github.com/zenbase-ai/code-voyager/archive/main.tar.gz | \
+  tar -xz -C .claude/skills --strip-components=3 code-voyager-main/.claude/skills/
 ```
+
+### Optional: Session Brain Hooks
+
+To enable persistent session memory (tracks what you're working on, decisions made, etc.), add hooks to your project's `.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "SessionStart": [{"matcher": {}, "hooks": [{"type": "command", "command": "voyager hook session-start", "timeout": 10000}]}],
+    "PreCompact": [{"matcher": {}, "hooks": [{"type": "command", "command": "voyager hook pre-compact", "timeout": 20000}]}],
+    "SessionEnd": [{"matcher": {}, "hooks": [{"type": "command", "command": "voyager hook session-end", "timeout": 20000}]}]
+  }
+}
+```
+
+### Optional: Feedback Collection Hook
+
+Set up the PostToolUse hook to automatically collect tool execution data for skill refinement:
+
+```bash
+voyager feedback setup
+```
+
+This installs a lightweight hook into `.claude/hooks/` and updates your project settings.
 
 ### Optional: Semantic Skill Retrieval
 
@@ -27,7 +70,7 @@ uv tool install "git+https://github.com/zenbase-ai/code-voyager.git[retrieval]"
 
 ```bash
 # Check skills are available
-ls ~/.claude/skills/
+ls .claude/skills/
 
 # Check CLI works (if installed)
 voyager --help
@@ -168,10 +211,6 @@ just hook-session-end
 
 Fixtures are located at `.claude/fixtures/hooks/`.
 
-### Project-Local Hooks
-
-The repo includes project-local hook wrappers in `.claude/hooks/` that delegate to the plugin hooks. These are configured in `.claude/settings.local.json` so you can test without modifying global Claude Code settings.
-
 ### Manual Smoke Test Checklist
 
 1. **Skill mirror**: `just sync-skills`
@@ -207,6 +246,10 @@ voyager skill index               # Build skill index
 voyager skill find "query"        # Search skills
 voyager feedback setup            # Install feedback hook
 voyager feedback insights         # Show skill insights
+voyager hook session-start        # SessionStart hook handler
+voyager hook session-end          # SessionEnd hook handler
+voyager hook pre-compact          # PreCompact hook handler
+voyager hook post-tool-use        # PostToolUse hook handler
 ```
 
 ## License

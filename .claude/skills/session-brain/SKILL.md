@@ -41,6 +41,26 @@ Session Brain updates **automatically** via hooks:
 
 You don't need to manually update the brain—just work normally and it tracks context.
 
+## Reading brain.json
+
+When exploring brain.json, use `jq` to query specific sections instead of reading the whole file:
+
+```bash
+# Current context (goal, plan, questions)
+jq '.working_set' .claude/voyager/brain.json
+
+# Decision history
+jq '.decisions' .claude/voyager/brain.json
+
+# Recent progress
+jq '.progress' .claude/voyager/brain.json
+
+# Project overview
+jq '.project' .claude/voyager/brain.json
+```
+
+For a quick human-readable summary, read `.claude/voyager/brain.md` instead.
+
 ## Answering User Questions
 
 When users ask about context, read and interpret the brain files:
