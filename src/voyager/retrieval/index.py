@@ -22,12 +22,12 @@ from voyager.retrieval.embedding import (
 _logger = get_logger("retrieval.index")
 
 # Check if RAGatouille is available
+RAGATOUILLE_AVAILABLE = False
 try:
     from ragatouille import RAGPretrainedModel
 
     RAGATOUILLE_AVAILABLE = True
 except ImportError:
-    RAGATOUILLE_AVAILABLE = False
     _logger.debug("RAGatouille not available, will use fallback search")
 
 

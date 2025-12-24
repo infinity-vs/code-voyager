@@ -149,16 +149,9 @@ for r in results:
 
 Core:
 - `typer` — CLI framework
-
-Optional (for ColBERT):
 - `ragatouille>=0.0.8` — ColBERT wrapper
 
-Install with:
-```bash
-pip install -e ".[retrieval]"
-```
-
-Without RAGatouille, falls back to simple text matching.
+Without RAGatouille available at runtime, falls back to simple text matching.
 
 ## Graceful Degradation
 

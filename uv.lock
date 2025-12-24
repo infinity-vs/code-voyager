@@ -3225,6 +3225,7 @@ dependencies = [
     { name = "claude-agent-sdk" },
     { name = "jsonschema" },
     { name = "pyyaml" },
+    { name = "ragatouille" },
     { name = "typer" },
 ]
 
@@ -3233,9 +3234,6 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
-retrieval = [
-    { name = "ragatouille" },
-]
 
 [package.metadata]
 requires-dist = [
@@ -3243,11 +3241,11 @@ requires-dist = [
     { name = "jsonschema", specifier = ">=4.25.1" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.0.0" },
     { name = "pyyaml", specifier = ">=6.0" },
-    { name = "ragatouille", marker = "extra == 'retrieval'", specifier = ">=0.0.8" },
+    { name = "ragatouille", specifier = ">=0.0.8" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.8.0" },
     { name = "typer", specifier = ">=0.15.0" },
 ]
-provides-extras = ["retrieval", "dev"]
+provides-extras = ["dev"]
 
 [[package]]
 name = "werkzeug"
