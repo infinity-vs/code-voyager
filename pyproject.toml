@@ -29,6 +29,19 @@ openai = [
 ollama = [
     "httpx>=0.25.0",
 ]
+# OpenRouter AI provider
+openrouter = [
+    "httpx>=0.25.0",
+]
+# OpenAI-compatible providers
+openai-compatible = [
+    "openai>=1.0.0",
+]
+# LSP server
+lsp = [
+    "pygls>=1.1.0",
+    "lsprotocol>=2023.0.0",
+]
 # All AI providers
 all-providers = [
     "openai>=1.0.0",
@@ -39,6 +52,8 @@ full = [
     "ragatouille>=0.0.8",
     "openai>=1.0.0",
     "httpx>=0.25.0",
+    "pygls>=1.1.0",
+    "lsprotocol>=2023.0.0",
 ]
 # Development dependencies
 dev = [
@@ -49,6 +64,7 @@ dev = [
 
 [project.scripts]
 voyager = "voyager.cli:main"
+voyager-lsp = "voyager.lsp.server:main"
 
 [build-system]
 requires = ["hatchling"]
