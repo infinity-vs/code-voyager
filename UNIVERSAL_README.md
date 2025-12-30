@@ -5,6 +5,13 @@
 Code Voyager adds persistent memory and skill management to AI coding assistants.
 Originally designed for Claude Code, it now works with **any editor** and **any AI provider**.
 
+> **🎉 Latest Updates (Dec 2024):**
+> - ✨ **New Providers**: Gemini (2M context) and Cohere (RAG-optimized)
+> - ✨ **New Editors**: Emacs package and Sublime Text plugin
+> - 📚 **9 AI Providers** and **5+ Editor Integrations** now supported!
+> 
+> See [CHANGELOG_NEW_FEATURES.md](CHANGELOG_NEW_FEATURES.md) for details.
+
 ## What's New: Universal Adapters
 
 Code Voyager now features:
@@ -207,22 +214,37 @@ voyager brain update
 voyager session end
 ```
 
+### Available Now
+
+- **VS Code**: ✅ Extension with sidebar and automatic integration
+- **Emacs**: ✅ Package with minor mode and LSP support
+- **Sublime Text**: ✅ Plugin with command palette and menu integration
+- **Generic LSP**: ✅ Works with any LSP-compatible editor (Neovim, Helix, Vim, etc.)
+
 ### Coming Soon
 
-- **VS Code**: Extension with sidebar and automatic integration
 - **JetBrains**: Plugin for IntelliJ, PyCharm, WebStorm, etc.
-- **Vim/Neovim**: Lua-based plugin with commands
-- **Generic LSP**: Works with any LSP-compatible editor
+- **Zed**: Native extension
 
 ## AI Providers
 
+Voyager now supports **9 AI providers** - choose based on your needs:
+
 | Provider | Best For | Cost | Privacy | Setup |
 |----------|----------|------|---------|-------|
-| **Claude** | Code quality | $$$ | Low | Easy |
-| **OpenAI** | Flexibility | $-$$$ | Low | Easy |
+| **Claude** | Code quality, instructions | $$$ | Low | Easy |
+| **OpenAI** | General purpose | $-$$$ | Low | Easy |
+| **Gemini** | Large context (2M tokens) | $ | Low | Easy |
+| **Cohere** | RAG, skill retrieval | $$ | Low | Easy |
 | **Ollama** | Privacy, offline | Free* | High | Medium |
+| **OpenRouter** | 50+ models, one API | Varies | Low | Easy |
+| **Azure OpenAI** | Enterprise, compliance | $$$ | Medium | Medium |
+| **Together AI** | Open models, fast | $$ | Low | Easy |
+| **Fireworks AI** | Fast inference | $$ | Low | Easy |
 
 *Requires local hardware
+
+See [PROVIDERS.md](PROVIDERS.md) for detailed comparison and setup guides.
 
 ## Configuration
 
@@ -317,10 +339,25 @@ voyager ask "What's next?" --provider openai --model gpt-3.5-turbo
 
 ## Documentation
 
+### Core Documentation
 - [Architecture](ARCHITECTURE.md) - System design and adapter architecture
-- [IDE Adapters](docs/ide-adapters.md) - Detailed IDE adapter guide
-- [AI Providers](docs/ai-providers.md) - AI provider comparison and setup
-- [Configuration](docs/configuration.md) - Complete configuration reference
+- [Migration Guide](MIGRATION_GUIDE.md) - Migrating from Claude Code to universal setup
+
+### Provider & Editor Guides
+- **[PROVIDERS.md](PROVIDERS.md)** - Complete guide to all 9 AI providers
+- **[EXTENSIONS.md](EXTENSIONS.md)** - Complete guide to all editor integrations
+- [VS Code Extension](extensions/vscode/README.md) - VS Code extension documentation
+- [Emacs Package](extensions/emacs/README.md) - Emacs package documentation
+- [Sublime Text Plugin](extensions/sublime/README.md) - Sublime Text plugin documentation
+- [LSP Server](src/voyager/lsp/README.md) - Generic LSP server for any editor
+
+### Examples & Tutorials
+- [Gemini Provider Example](examples/providers/gemini_example.md)
+- [Cohere Provider Example](examples/providers/cohere_example.md)
+- [Generic CLI Example](examples/generic-cli/README.md)
+- [OpenAI Example](examples/with-openai/README.md)
+- [Ollama Example](examples/with-ollama/README.md)
+- [OpenRouter Example](examples/with-openrouter/README.md)
 
 ## Migration from Claude Code
 
@@ -389,33 +426,37 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for details.
 
 We welcome contributions for:
 
-- New IDE adapters (VS Code, JetBrains, Vim, etc.)
-- New AI providers (Gemini, Cohere, etc.)
+- New IDE adapters (JetBrains, Zed, etc.)
+- New AI providers (HuggingFace, LocalAI, Anthropic Bedrock, etc.)
+- Improvements to existing integrations
 - Documentation improvements
 - Bug fixes and features
+- Package manager submissions (VS Code Marketplace, MELPA, Package Control)
 
 ## Roadmap
 
-### High Priority
+### Completed ✅
 
 - [x] Generic CLI adapter
 - [x] OpenAI provider
 - [x] Ollama provider
-- [ ] VS Code extension
-- [ ] Generic LSP server
+- [x] VS Code extension
+- [x] Generic LSP server
+- [x] **Gemini provider** ✨
+- [x] **Cohere provider** ✨
+- [x] **Emacs package** ✨
+- [x] **Sublime Text plugin** ✨
+- [x] OpenRouter provider
+- [x] Azure OpenAI provider
+- [x] Together AI provider
+- [x] Fireworks AI provider
 
-### Medium Priority
+### In Progress / Planned
 
 - [ ] JetBrains plugin
-- [ ] Vim/Neovim plugin
-- [ ] Gemini provider
-- [ ] Anthropic API provider
-
-### Low Priority
-
-- [ ] Emacs package
-- [ ] Sublime Text plugin
-- [ ] Cohere provider
+- [ ] Zed extension
+- [ ] Package manager releases (VS Code Marketplace, MELPA, Package Control)
+- [ ] More AI providers (HuggingFace, LocalAI, etc.)
 
 ## License
 

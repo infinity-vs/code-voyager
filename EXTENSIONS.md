@@ -513,7 +513,15 @@ vim.keymap.set('n', '<leader>vu', ':VoyagerBrain<CR>')
 
 For all integrations:
 
-1. ✅ Install Voyager CLI: `pip install voyager-agent`
+1. ✅ Install Voyager CLI:
+   ```bash
+   # From PyPI (when published)
+   pip install voyager-agent
+   
+   # Or from source
+   pip install git+https://github.com/infinity-vs/code-voyager.git
+   ```
+
 2. ✅ Initialize configuration: `voyager config init`
 3. ✅ Set API key: `voyager config set ai.claude.api_key "your-key"`
 4. ✅ Install editor-specific extension (VS Code/Emacs/Sublime)
