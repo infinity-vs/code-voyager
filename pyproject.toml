@@ -42,10 +42,20 @@ lsp = [
     "pygls>=1.1.0",
     "lsprotocol>=2023.0.0",
 ]
+# Google Gemini AI provider
+gemini = [
+    "google-generativeai>=0.3.0",
+]
+# Cohere AI provider
+cohere = [
+    "cohere>=4.0.0",
+]
 # All AI providers
 all-providers = [
     "openai>=1.0.0",
     "httpx>=0.25.0",
+    "google-generativeai>=0.3.0",
+    "cohere>=4.0.0",
 ]
 # Full installation with all features
 full = [
@@ -54,6 +64,8 @@ full = [
     "httpx>=0.25.0",
     "pygls>=1.1.0",
     "lsprotocol>=2023.0.0",
+    "google-generativeai>=0.3.0",
+    "cohere>=4.0.0",
 ]
 # Development dependencies
 dev = [

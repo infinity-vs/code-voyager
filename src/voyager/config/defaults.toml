@@ -40,9 +40,26 @@ timeout_seconds = 120
 
 [ai.gemini]
 # Google Gemini settings
-model = "gemini-pro"
+model = "gemini-1.5-pro"
+# Other models:
+# model = "gemini-1.5-flash"  # Faster, cheaper
+# model = "gemini-pro"  # Previous generation
 timeout_seconds = 60
+temperature = 0.7
+# max_tokens = 8192
 # API key read from GOOGLE_API_KEY environment variable
+
+[ai.cohere]
+# Cohere settings
+model = "command-r-plus"
+# Other models:
+# model = "command-r"  # Balanced quality/speed
+# model = "command"  # Fast
+# model = "command-light"  # Lightweight
+timeout_seconds = 60
+temperature = 0.7
+# max_tokens = 4096
+# API key read from COHERE_API_KEY environment variable
 
 [ai.openai_compatible]
 # OpenAI-compatible API settings (Azure OpenAI, LocalAI, Together AI, etc.)
