@@ -1,0 +1,70 @@
+[voyager]
+# Storage location (relative to project root)
+state_dir = ".voyager"
+skills_dir = ".voyager/skills"
+
+# IDE adapter to use
+# Options: "claude_code", "vscode", "jetbrains", "vim", "generic_cli", "generic_lsp"
+ide_adapter = "claude_code"
+
+# AI provider to use
+# Options: "claude", "openai", "ollama", "gemini", "anthropic"
+ai_provider = "claude"
+
+[ai.claude]
+# Claude AI settings (uses Claude Agent SDK)
+model = "claude-3-5-sonnet-20241022"
+timeout_seconds = 60
+max_turns = 10
+# API key read from ANTHROPIC_API_KEY environment variable
+
+[ai.openai]
+# OpenAI settings
+model = "gpt-4"
+timeout_seconds = 60
+max_turns = 10
+# API key read from OPENAI_API_KEY environment variable
+
+[ai.anthropic]
+# Direct Anthropic API (alternative to Claude Agent SDK)
+model = "claude-3-5-sonnet-20241022"
+timeout_seconds = 60
+max_tokens = 4096
+# API key read from ANTHROPIC_API_KEY environment variable
+
+[ai.ollama]
+# Local Ollama settings
+model = "llama3.1"
+base_url = "http://localhost:11434"
+timeout_seconds = 120
+
+[ai.gemini]
+# Google Gemini settings
+model = "gemini-pro"
+timeout_seconds = 60
+# API key read from GOOGLE_API_KEY environment variable
+
+[ide.claude_code]
+# Claude Code specific settings
+hooks_enabled = true
+
+[ide.vscode]
+# VS Code specific settings
+extension_id = "voyager.code-voyager"
+
+[ide.jetbrains]
+# JetBrains specific settings
+plugin_id = "ai.zenbase.voyager"
+
+[ide.vim]
+# Vim/Neovim specific settings
+plugin_name = "voyager.nvim"
+
+[ide.generic_cli]
+# Generic CLI settings (manual session management)
+auto_save_brain = true
+verbose = true
+
+[ide.generic_lsp]
+# Generic LSP server settings
+port = 7878
